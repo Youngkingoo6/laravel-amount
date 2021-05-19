@@ -23,7 +23,11 @@ trait AmountTrait
     {
         $value = parent::getAttributeValue($key);
         if (in_array($key, $this->getAmountFields())) {
-            $value = $value / self::$amountTimes;
+            if(function_exists('bcdiv')){
+                $value = bcdiv($value, self::$amountTimes,2);
+            }else{
+                $value = $value / self::$amountTimes;
+            }
         }
 
         return $value;
@@ -32,7 +36,11 @@ trait AmountTrait
     public function setAttribute($key, $value)
     {
         if (in_array($key, $this->getAmountFields())) {
-            $value = (int)($value * self::$amountTimes);
+            if(function_exists('bcmul')){
+                $value = (int)bcmul($value, self::$amountTimes);
+            }else{
+                $value = (int)($value * self::$amountTimes);
+            }
         }
         parent::setAttribute($key, $value);
     }
