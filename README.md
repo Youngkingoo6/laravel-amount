@@ -35,14 +35,16 @@ public function getMutatedAttributes()
 protected function mutateAttributeForArray($key, $value)
 {
     return (in_array($key, $this->getAmountFields()))
-        ? $value / self::$amountTimes
+        ? (function_exists('bcdiv') ? bcdiv($value, self::$amountTimes, 2) : $value / self::$amountTimes)
         : parent::mutateAttributeForArray($key, $value);
 }
 
 public function getAttributeValue($key)
 {
     $value = parent::getAttributeValue($key);
-    if (in_array($key, $this->getAmountFields())) {
+    if(function_exists('bcdiv')){
+        $value = bcdiv($value, self::$amountTimes,2);
+    }else{
         $value = $value / self::$amountTimes;
     }
 
@@ -52,7 +54,11 @@ public function getAttributeValue($key)
 public function setAttribute($key, $value)
 {
     if (in_array($key, $this->getAmountFields())) {
-        $value = (int)($value * self::$amountTimes);
+          if(function_exists('bcmul')){
+              $value = (int)bcmul($value, self::$amountTimes);
+          }else{
+              $value = (int)($value * self::$amountTimes);
+          }
     }
     parent::setAttribute($key, $value);
 }
