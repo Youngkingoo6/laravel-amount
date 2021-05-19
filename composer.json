@@ -1,16 +1,22 @@
 {
-    "name": "hao-li/laravel-amount",
+    "name": "youngkingoo6/laravel-amount",
     "require": {
     },
     "autoload": {
         "psr-4": {
-            "HaoLi\\LaravelAmount\\": "src/"
+            "Youngkingoo6\\LaravelAmount\\": "src/"
         }
     },
     "authors": [
         {
             "name": "hao li",
             "email": "haoli.sand@gmail.com"
+        },
+        
+        {
+            "name": "Youngking",
+            "email": "oking@treemong.com"
         }
+
     ]
 }

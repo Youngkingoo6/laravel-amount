@@ -1,6 +1,6 @@
 <?php
 
-namespace HaoLi\LaravelAmount\Traits;
+namespace Youngkingoo6\LaravelAmount\Traits;
 
 trait AmountTrait
 {
