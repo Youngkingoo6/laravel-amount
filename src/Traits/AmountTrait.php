@@ -15,7 +15,7 @@ trait AmountTrait
     protected function mutateAttributeForArray($key, $value)
     {
         return (in_array($key, $this->getAmountFields()))
-            ? $value / self::$amountTimes
+            ? (function_exists('bcdiv') ? bcdiv($value, self::$amountTimes, 2) : $value / self::$amountTimes)
             : parent::mutateAttributeForArray($key, $value);
     }
 
