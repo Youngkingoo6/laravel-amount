@@ -74,7 +74,7 @@ Laravel >= 5.2
 
 ## 安装
 ```
-composer require "hao-li/laravel-amount:dev-master"
+composer require "youngkingoo6/laravel-amount:dev-master"
 ```
 
 ## 使用
