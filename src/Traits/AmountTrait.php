@@ -105,9 +105,6 @@ trait AmountTrait
         if ($outputCharacters == "") {
             $outputCharacters = $digits[0] . $cn_dollar;
         }
-        if ($float_str) {
-            $outputCharacters .= $cn_integer;
-        }
         return $outputCharacters;
     }
 }
