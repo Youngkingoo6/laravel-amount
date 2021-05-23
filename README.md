@@ -103,10 +103,16 @@ composer require "youngkingoo6/laravel-amount:dev-master"
 
 5. 中文大写
 
-  如需转换为中文金额大写，只需在模型上调用的地段后面加 '_cny' 即可返回大写金额。
+  如需转换为中文金额大写，只需在模型上调用的字段后面加 '_cny' 即可返回大写金额。
 
 ```
-$model->amount_cny
+$model->amount_cny;
+```
+
+  如果不想定义 $amountFields 字段，也可以直接调用修改器
+
+```
+$model->cny;
 ```
 ## FAQ
 

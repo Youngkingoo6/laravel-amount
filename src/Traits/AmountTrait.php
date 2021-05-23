@@ -32,10 +32,11 @@ trait AmountTrait
             }else{
                 $value = $value / self::$amountTimes;
             }
+            if($cny){
+                $value = $this->getCnyAttribute($value);
+            }
         }
-        if($cny){
-            $value = $this->getCny($value);
-        }
+        
         return $value;
     }
 
@@ -56,14 +57,13 @@ trait AmountTrait
         return (property_exists($this, 'amountFields')) ? $this->amountFields : [];
     }
 
-    public function getCny($value)
+    public function getCnyAttribute($value)
     {
         $digits = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
         $radices =['', '拾', '佰', '仟', '万', '亿'];
         $bigRadices = ['', '万', '亿'];
         $decimals = ['角', '分'];
         $cn_dollar = '元';
-        $cn_integer = '整';
         $num_arr = explode('.', $value);
         $int_str = $num_arr[0] ?? '';
         $float_str = $num_arr[1] ?? '';
