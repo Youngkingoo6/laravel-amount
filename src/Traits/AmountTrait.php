@@ -21,9 +21,9 @@ trait AmountTrait
 
     public function getAttributeValue($key)
     {
-        $cny = strtolower(substr($key, - 3)) === 'cny';
+        $cny = strtolower(substr($key, - 4)) === '_cny';
         if($cny){
-            $key = substr($key,0, strlen($key)-3);
+            $key = substr($key,0, strlen($key)-4);
         }
         $value = parent::getAttributeValue($key);
         if (in_array($key, $this->getAmountFields())) {

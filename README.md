@@ -82,7 +82,7 @@ composer require "youngkingoo6/laravel-amount:dev-master"
 1. 在 Model 中引用 AmountTrait
 
   ```php
-  use HaoLi\LaravelAmount\Traits\AmountTrait;
+  use Youngkingoo6\LaravelAmount\Traits\AmountTrait;
   ```
 
 2. 使用 AmountTrait
@@ -100,7 +100,11 @@ composer require "youngkingoo6/laravel-amount:dev-master"
 4. 完成
 
   之后读取 amount 字段时，该字段的内容会自动从数据库的**分**转换为**元**，向其赋值时反之从**元**转换为**分**。
-
+5. 中文大写
+如需转换为中文金额大写，只需在模型上调用的地段后面加 '_cny' 即可返回大写金额。
+```
+$model->amount_cny
+```
 ## FAQ
 
 ### 和别的 trait 中方法冲突
